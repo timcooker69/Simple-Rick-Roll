@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Never Gonna Give You Up</title>
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        iframe {
+            max-width: 90%;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+        .counter {
+            margin-top: 20px;
+            font-size: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>You've been Rickrolled!</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Aq5WXmQQooo?autoplay=1&loop=1&playlist=Aq5WXmQQooo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="counter">
+        Total Rickrolls: <span id="count">0</span>
+    </div>
+    <script>
+        // This script uses CountAPI to track visits
+        const counterContainer = document.getElementById('count');
+
+        async function updateCounter() {
+            try {
+                // Change 'rickroll-tracker-2024' to any unique name you like
+                const response = await fetch('https://api.countapi.xyz/hit/rickroll-page/visits');
+                const data = await response.json();
+                counterContainer.innerText = data.value;
+            } catch (error) {
+                counterContainer.innerText = "Error loading count";
+            }
+        }
+
+        updateCounter();
+    </script>
+</body>
+</html>
